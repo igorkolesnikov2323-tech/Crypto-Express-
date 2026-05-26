@@ -59,24 +59,17 @@
     transition: 0.2s;
 }
 .main__flex{
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
-/* p {
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-90);
-} */
 
 .list__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
     align-items: center;
-    gap: 10px;
 }
 
 
@@ -86,6 +79,8 @@
     font-size: 18px;
     line-height: 150%;
     color: var(--grey-90);
+    text-align: left;
+    justify-items: start;
 }
 
 .coin__price {
@@ -94,4 +89,76 @@
     font-size: 18px;
     line-height: 150%;
     color: var(--grey-90);
+    text-align: center;
+    width: 200px;
+    text-align: left;
+}
+
+.titles__container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    padding: 0 20px;
+}
+.title__item {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+}
+.coin__1h{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__24h{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__market-cap{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__volume{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__dex{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__age{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
+}
+.coin__dextxns{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-align: left;
 }
