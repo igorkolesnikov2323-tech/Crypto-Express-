@@ -7,6 +7,7 @@ html {
     --container-color: #1E1F20;
     --grey-90: #e6e6e6;
     --hover-color: #2D2E30;
+    --text-hover-color: #4e6ed8;
 }
 
 :root {
@@ -94,6 +95,13 @@ html {
     color: var(--grey-90);
     text-align: left;
     justify-items: start;
+}
+
+.coin__name:hover {
+    color: var(--text-hover-color);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 150ms;
 }
 
 .coin__price {
