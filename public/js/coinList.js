@@ -1,13 +1,14 @@
 const URLToJSON = "data/crypto-cache.json";
 const listContainer = document.querySelector(".main__flex");
-import { convertTime } from './convertTime.js';
-import { convertNumber } from './convertNumber.js';
+import { convertTime } from "./convertTime.js";
+import { convertNumber } from "./convertNumber.js";
+const array1H = {};
+const array24H = {};
 
 async function createHTMLElement() {
   try {
     let response = await fetch(URLToJSON);
     let data = await response.json();
-    /* listContainer.innerHTML = ""; */
     for (let index = 0; index < data.length; index++) {
       let listItem = document.createElement("div");
       listItem.className = "list__item";
@@ -46,6 +47,7 @@ async function getCoinData() {
     const coinDEXTXNS = document.querySelectorAll(".coin__dextxns");
     let response = await fetch(URLToJSON);
     let data = await response.json();
+      // -----------------------------------------
     coinNames.forEach((element, index) => {
       element.innerText = data[index].name;
       if (data[index].symbol === "USDT") {
@@ -58,36 +60,60 @@ async function getCoinData() {
         .price;
       element.innerText = `$ ${priceValue.toFixed(4)}`;
     });
-    coin1H.forEach((element, index)=>{
+    coin1H.forEach((element, index) => {
       const symbols = data[index].symbol;
-      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote.USD
-        .percent_change_1h;
-        element.innerText = `${oneHourValue.toFixed(4)} %`;
-    })
-    coin24H.forEach((element, index)=>{
+      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote
+        .USD.percent_change_1h;
+      element.innerText = `${oneHourValue.toFixed(2)} %`;
+      if(!array1H[symbols]){
+        array1H[symbols]=[0]
+      }
+      let curr = data[index].quote.USD.percent_change_1h
+      let prev = array1H[symbols][0]
+      let result = curr - prev 
+      array1H[symbols]=curr
+      if(result>0){
+        element.style.color = '#16C784'
+      } else if (result<0){
+        element.style.color = '#EA3943'
+      }
+    });
+    coin24H.forEach((element, index) => {
       const symbols = data[index].symbol;
-      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote.USD
-        .percent_change_24h;
-        element.innerText = `${oneHourValue.toFixed(4)} %`;
-    })
-    coinMC.forEach((element, index)=>{
+      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote
+        .USD.percent_change_24h;
+      element.innerText = `${oneHourValue.toFixed(2)} %`;
+      if(!array24H[symbols]){
+        array24H[symbols]=[0]
+      }
+      let curr = data[index].quote.USD.percent_change_24h
+      let prev = array24H[symbols][0]
+      let result = curr - prev 
+      array24H[symbols]=curr
+      if(result>0){
+        element.style.color = '#16C784'
+      } else if (result<0){
+        element.style.color = '#EA3943'
+      }
+    });
+    coinMC.forEach((element, index) => {
       const symbols = data[index].symbol;
       const MarketCap = data.find((coin) => coin.symbol === symbols).quote.USD
         .market_cap;
-        element.innerText = convertNumber(MarketCap);
-    })
-    coinVolume.forEach((element, index)=>{
+      element.innerText = convertNumber(MarketCap);
+    });
+    coinVolume.forEach((element, index) => {
       const symbols = data[index].symbol;
       const Volume = data.find((coin) => coin.symbol === symbols).quote.USD
         .volume_24h;
-        element.innerText = convertNumber(Volume);
-    })
-    coinAge.forEach((element, index)=>{
+      element.innerText = convertNumber(Volume);
+    });
+    coinAge.forEach((element, index) => {
       const symbols = data[index].symbol;
-      const date = data.find((coin) => coin.symbol === symbols).date_added
-      const oneHourValue = convertTime(date)
-        element.innerText = oneHourValue;
-    })
+      const date = data.find((coin) => coin.symbol === symbols).date_added;
+      const oneHourValue = convertTime(date);
+      element.innerText = oneHourValue;
+    });
     console.log("Данные обновлены в спике");
   } catch (error) {
     console.error(error.message);

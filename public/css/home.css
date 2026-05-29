@@ -1,7 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
     --background-color: #0F0F0F;
     --container-color: #1E1F20;
     --grey-90: #e6e6e6;
+    --hover-color: #2D2E30;
 }
 
 :root {
@@ -64,12 +69,20 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    gap : 20px;
 }
 
 .list__item {
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
     align-items: center;
+    padding: 10px 0;
+}
+
+.list__item:hover {
+    background-color: var(--hover-color);
+    border-radius: 5px;
+    transition: 150ms;
 }
 
 
@@ -98,6 +111,7 @@
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     padding: 0 20px;
+    padding-top: 20px;
 }
 .title__item {
     font-family: var(--font-family);
