@@ -1,5 +1,3 @@
-const registraitionForm = document.querySelector("#register__form");
-
 function validateEmail(email) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
@@ -36,38 +34,26 @@ function validatePassword(pass) {
   }
 }
 
-async function sendPOSTRequest(username, email, password) {
-  return await fetch("http://localhost:3000/api/register", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      username: username,
-      email: email,
-      password: password,
-    }),
-  });
+function requireAdmin(req, res, next) {
+  const authHeader = req.headers["authorizaiton"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ erro: "Access denied. No token provied." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, 'kjchvidu487kjv83r323jD4§"xcnx%%%!!');
+
+    if (decoded !== "admin") {
+      return res.status(401).json({ error: "Access denied. Admins only" });
+    }
+
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: "Invalid or expired token" });
+  }
 }
 
-registraitionForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const emailValue = document.querySelector("#email__input").value;
-  const passwordValue = document.querySelector("#password__input").value;
-  const usernameValue = document.querySelector("#username__input").value;
-
-  if (validateEmail(emailValue) && validatePassword(passwordValue)) {
-    try {
-      const response = await sendPOSTRequest(
-        usernameValue.trim(),
-        emailValue.trim(),
-        passwordValue.trim(),
-      );
-      console.log('Отправка данных на сервер')
-      const result = await response.json()
-      console.log(`Result ${result}`)
-    } catch (error) {
-      console.log("Network error: ", error);
-    }
-  }
-});
+module.exports = { validateEmail, validatePassword };

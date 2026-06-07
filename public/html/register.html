@@ -8,19 +8,50 @@
     <link rel="stylesheet" href="css/register.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Register page</title>
 </head>
 <body>
     <div class="wrapper">
+        <header class="header">
+        <div class="container">
+          <div class="header__top">
+            <div class="header__flexbox">
+              <a href="/">
+                <img
+                  class="logo"
+                  src="../img/barnbridge-bond-logo.svg"
+                  alt="Logo"
+                />
+              </a>
+              <nav class="header__nav">
+                <a class="nav__item" href="/about">About</a>
+                <a class="nav__item" href="/">Home</a>
+                <a class="nav__item" href="/login">Login</a>
+                <a class="nav__item" href="/register">Sign Up</a>
+              </nav>
+              <img
+                class="profile__logo"
+                src="../img/profile-svgrepo-com.svg"
+                alt="profile__logo"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
         <div class="register__container">
             <main class="main">
                 <div class="register__flexbox">
                     <form action="#" id="register__form">
-                        <h1 class="register__title">Sign Up!!</h1>
-                        <input type="text" id="username__input" name="username" placeholder="Enter your username" value="kolesnikov_183">
-                        <input type="email" id="email__input" name="email" placeholder="Enter your email" value="spotyjames003@gmail.com">
-                        <input type="password" id="password__input" name="password" placeholder="Enter your password" value="cnjkdncnvkj/&6367GDGH">
+                        <h1 class="register__title">Create an Account</h1>
+                        <input type="text" id="username__input" name="username" placeholder="Enter your username">
+                        <input type="email" id="email__input" name="email" placeholder="Enter your email">
+                        <input type="password" id="password__input" name="password" placeholder="Enter your password">
                         <button type="submit" id="submit__button">Submit</button>
+                        <a class="register__link" href="login">Login</a>
                     </form>
                 </div>
             </main>

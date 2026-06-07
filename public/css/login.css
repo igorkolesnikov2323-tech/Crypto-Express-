@@ -15,18 +15,18 @@ html {
     --second-family: "Inter", sans-serif;
 }
 
-.register__container {
+.login__container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.register__flexbox {
+.login__flexbox {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#register__form {
+#login__form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -36,7 +36,7 @@ html {
     border-radius: 8px;
 }
 
-.register__title {
+.login__title {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 24px;
@@ -45,7 +45,7 @@ html {
     margin: 0 auto;
 }
 
-#username__input, #email__input, #password__input {
+#login__email, #login__password {
     padding: 10px;
     background-color: var(--background-color);
     border: none;
@@ -58,7 +58,7 @@ html {
     color: var(--grey-90);
 }
 
-#submit__button {
+#login__submit {
     padding: 10px;
     background-color: var(--hover-color);
     border: none;
@@ -71,13 +71,12 @@ html {
     color: var(--grey-90);
     cursor: pointer;
 }
-
-#submit__button:hover {
+#login__submit:hover {
     background-color: var(--text-hover-color);
     transition: 0.2s;
 }
 
-.register__link {
+.login__link {
     font-family: var(--second-family);
     font-weight: 400;
     font-size: 20px;
@@ -87,26 +86,7 @@ html {
     margin: 0 auto;
 }
 
-.register__link:hover {
+.login__link:hover {
     color: var(--text-hover-color);
     transition: 150ms;
-}
-
-.about__title {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 150%;
-    color: var(--grey-90);
-    text-decoration: none;
-    margin: 0 auto;
-}
-.about__text {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 150%;
-    color: var(--grey-90);
-    text-decoration: none;
-    margin: 0 auto;
 }

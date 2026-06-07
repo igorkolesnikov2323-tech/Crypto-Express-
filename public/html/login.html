@@ -1,21 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Homepage</title>
-  </head>
-  <body>
+    <title>Login Page</title>
+</head>
+<body>
     <div class="wrapper">
-      <header class="header">
+        <header class="header">
         <div class="container">
           <div class="header__top">
             <div class="header__flexbox">
@@ -41,34 +42,20 @@
           </div>
         </div>
       </header>
-      <main class="main">
-        <div class="container">
-          <div class="titles__container">
-            <p class="title__item">Name</p>
-            <p class="title__item">Price</p>
-            <p class="title__item">1h %</p>
-            <p class="title__item">24h %</p>
-            <p class="title__item">Market Cap</p>
-            <p class="title__item">Volume (24h)</p>
-            <p class="title__item">DEX Liquidity</p>
-            <p class="title__item">Age</p>
-            <p class="title__item">DEX Txns (24h)</p>
-          </div>
-          <div class="main__flex"></div>
+        <div class="login__container">
+            <main class="main">
+                <div class="login__flexbox">
+                    <form action="#" id="login__form">
+                        <h1 class="login__title">Login</h1>
+                        <input type="email" id="login__email" name="email" placeholder="enter your email" value="bimbabambabumba@gmail.com">
+                        <input type="password" id="login__password" name="password" placeholder="enter your password" value="QDfi8pY96WhhSvP2&%">
+                        <button type="submit" id="login__submit">Submit</button>
+                        <a class="login__link" href="register">Don't have an account yet?</a>
+                    </form>
+                </div>
+            </main>
         </div>
-        <div class="pages">
-            <div class="pages__item"><-</div>
-            <div class="pages__item">1</div>
-            <div class="pages__item">2</div>
-            <div class="pages__item">3</div>
-            <div class="pages__item">4</div>
-            <div class="pages__item">5</div>
-            <div class="pages__item">6</div>
-            <div class="pages__item">-></div>
-          </div>
-          <div class="empty"></div>
-      </main>
     </div>
-    <script src="../js/coinList.js" type="module"></script>
-  </body>
+    <script src="../js/loginData.js" type="module"></script>
+</body>
 </html>

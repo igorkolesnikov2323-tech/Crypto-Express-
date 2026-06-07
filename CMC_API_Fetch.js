@@ -36,7 +36,7 @@ async function run() {
   } catch (error) {
     console.error("Request error:", error.message);
   } finally {
-    setTimeout(run, 300000);
+    setTimeout(run, 1800000);
   }
 }
 
