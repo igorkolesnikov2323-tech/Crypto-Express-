@@ -24,6 +24,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #register__form {
@@ -80,7 +81,7 @@ html {
 .register__link {
     font-family: var(--second-family);
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 150%;
     color: var(--grey-90);
     text-decoration: none;
@@ -109,4 +110,86 @@ html {
     color: var(--grey-90);
     text-decoration: none;
     margin: 0 auto;
+}
+
+.register__error, .email__error {
+    display: block;
+    font-family: var(--second-family);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    color: #D31130;
+    text-align: center;
+}
+
+.warning__logo, .email__logo {
+    display: block;
+    margin: 0 10px;
+    width: 18px;
+}
+
+.error__flexbox-1, .error__flexbox-2 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.verification__box {
+    display: none;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--container-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25% auto;
+}
+.verification__title {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    color: var(--grey-90);
+    text-decoration: none;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.verification__item {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 150%;
+    color: var(--grey-90);
+    background-color: var(--background-color);
+    width: 30px;
+    text-align: center;
+}
+
+.verification__flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#verification__submit{
+    padding: 10px;
+    background-color: var(--hover-color);
+    border: none;
+    border-radius: 4px;
+    color: var(--grey-90);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-90);
+    cursor: pointer;
+}
+
+#verification__submit:hover {
+    background-color: var(--text-hover-color);
+    transition: 150ms;
 }

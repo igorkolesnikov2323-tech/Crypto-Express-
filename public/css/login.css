@@ -90,3 +90,23 @@ html {
     color: var(--text-hover-color);
     transition: 150ms;
 }
+
+.login__error {
+    display: none;
+    font-family: var(--second-family);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    color: #D31130;
+    text-align: center;
+}
+
+.logine__error {
+    display: none;
+    font-family: var(--second-family);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    color: #D31130;
+    text-align: center;
+}

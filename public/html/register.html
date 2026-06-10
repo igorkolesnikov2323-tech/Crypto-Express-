@@ -46,17 +46,39 @@
             <main class="main">
                 <div class="register__flexbox">
                     <form action="#" id="register__form">
-                        <h1 class="register__title">Create an Account</h1>
+                        <h1 class="register__title">Sign Up</h1>
                         <input type="text" id="username__input" name="username" placeholder="Enter your username">
+                        <div class="error__flexbox-1">
+                          <img class="warning__logo" src="../img/warning-sign-9743.svg" alt="warning_logo">
+                          <p class="register__error">Username already exists</p>
+                        </div>
                         <input type="email" id="email__input" name="email" placeholder="Enter your email">
+                        <div class="error__flexbox-2">
+                          <img class="email__logo" src="../img/warning-sign-9743.svg" alt="error__logo">
+                          <p class="email__error">Email already exists</p>
+                        </div>
                         <input type="password" id="password__input" name="password" placeholder="Enter your password">
+                        <!-- <p class="register__error">User already exists</p> -->
                         <button type="submit" id="submit__button">Submit</button>
                         <a class="register__link" href="login">Login</a>
+                    </form>
+                    <form class="verification__box">
+                      <h1 class="verification__title">Enter your code here:</h1>
+                      <div class="verification__flexbox">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                        <input type="text" class="verification__item" maxlength="1" inputmode="numeric">
+                      </div>
+                      <button type="submit" id="verification__submit">Submit</button>
                     </form>
                 </div>
             </main>
         </div>
     </div>
+    <script src="../js/verificationCode.js"></script>
     <script type="module" src="../js/validateDataFromForm.js"></script>
 </body>
 </html>
