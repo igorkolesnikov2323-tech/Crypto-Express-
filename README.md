@@ -61,3 +61,14 @@ It is a learning project where I experiment with architecture, features, and dev
 
 GitHub: https://github.com/igorkolesnikov2323-tech
 Email: igorkolesnikov2323@gmail.com
+
+<img width="1848" height="1036" alt="image" src="https://github.com/user-attachments/assets/646a8c25-f96d-467f-90de-3df4254ea1bb" />
+
+<img width="1842" height="1039" alt="image" src="https://github.com/user-attachments/assets/377788cb-7bed-4b14-b5dc-e074ce780730" />
+
+<img width="1862" height="947" alt="image" src="https://github.com/user-attachments/assets/ab536ea9-abf0-4ed0-b9e6-237c8192b5e6" />
+
+<img width="1853" height="1028" alt="image" src="https://github.com/user-attachments/assets/6abf02a3-2ec1-4095-ae1d-35d33efeac4d" />
+
+
+
