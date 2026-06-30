@@ -1,0 +1,36 @@
+@import url('fonts.css');
+
+:root {
+    --bg-main: #0F0F0F;
+    --bg-card: #141414;
+    --bg-hover: #1A1A1A;
+    --container-color: #1E1F20;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    
+    --text-main: #FFFFFF;
+    --text-muted: #888888;
+    --grey-90: #E6E6E6;
+    
+    --accent-green: #00E676;
+    --accent-red: #FF3D00;
+    --accent-gradient: linear-gradient(135deg, #ff9843 0%, #ff6b6b 50%, #d852db 100%);
+    --accent-purple: #651FFF;
+    --text-hover-color: #4e6ed8;
+
+    --font-family: "Barlow", sans-serif;
+    --primary-font: 'Inter', sans-serif; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--primary-font);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}

@@ -1,69 +1,11 @@
-html {
-  scroll-behavior: smooth;
-}
-
-:root {
-    --background-color: #0F0F0F;
-    --container-color: #1E1F20;
-    --grey-90: #e6e6e6;
-    --hover-color: #2D2E30;
-    --text-hover-color: #4e6ed8;
-}
-
-:root {
-    --font-family: "Barlow", sans-serif;
-    --second-family: "Inter", sans-serif;
-}
-
-.wrapper {
-    max-width: 100%;
-    min-height: 100vh;
-    background-color: var(--background-color);
-}
+@import url('main.css');
 
 .container {
-    max-width: 1200px;
+    max-width: 1800px;
     margin: 0 auto;
-    background-color: var(--container-color);
     border-radius: 8px;
 }
 
-/* ------------------------------------------------------------------------------- */
-
-.header__flexbox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-.header{
-    padding: 20px 0;
-}
-
-.logo {
-    width: 50px;
-    height: auto;
-}
-
-.profile__logo {
-    width: 50px;
-    height: auto;
-}
-.header__nav {
-    display: flex;
-    gap: 20px;
-}
-.nav__item {
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-90);
-}
-.nav__item:hover {
-    transform: scale(1.1);
-    transition: 0.2s;
-}
 .main__flex{
     display: flex;
     flex-direction: column;
@@ -71,6 +13,20 @@ html {
     justify-content: center;
     padding: 20px;
     gap : 20px;
+}
+
+.hero {
+    padding: 30% 0 35% 0;
+}
+
+.hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
 }
 
 .list__item {
@@ -86,13 +42,21 @@ html {
     transition: 150ms;
 }
 
+.market__section {
+    background-color: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 100%;
+}
 
 .coin__name {
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
     justify-items: start;
 }
@@ -105,11 +69,11 @@ html {
 }
 
 .coin__price {
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: center;
     width: 200px;
     text-align: left;
@@ -122,66 +86,66 @@ html {
     padding-top: 20px;
 }
 .title__item {
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
 }
 .coin__1h{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__24h{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__market-cap{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__volume{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__dex{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__age{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 .coin__dextxns{
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
 }
 
@@ -189,18 +153,17 @@ html {
     display: flex;
     gap: 10px;
     padding: 20px;
-    background-color: var(--container-color);
     width: fit-content;
     height: fit-content;
     margin: 20px auto;
     border-radius: 8px;
 }
 .pages__item {
-    font-family: var(--font-family);
+    font-family: var(--primary-font);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    color: var(--grey-90);
+    color: var(--text-main);
     text-align: left;
     width: 30px;
     height: 30px;
@@ -208,6 +171,7 @@ html {
     align-items: center;
     justify-content: center;
     background-color: var(--hover-color);
+    cursor: pointer;
 }
 
 .empty {

@@ -11,7 +11,7 @@ async function run() {
     );
     url.search = new URLSearchParams({
       start: "1",
-      limit: "40",
+      limit: "80",
       convert: "USD",
     }).toString();
     const response = await fetch(url, {

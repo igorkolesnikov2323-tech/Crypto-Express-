@@ -1,123 +1,142 @@
+let currentPage = 1;
+const limit = 10;
+
 const URLToJSON = "data/crypto-cache.json";
 const listContainer = document.querySelector(".main__flex");
 import { convertTime } from "./convertTime.js";
 import { convertNumber } from "./convertNumber.js";
 const array1H = {};
 const array24H = {};
+const URLToMeta = "data/crypto-meta.json";
+let metaDataArr = []
 
-async function createHTMLElement() {
+async function loadCoins(page) {
   try {
-    let response = await fetch(URLToJSON);
-    let data = await response.json();
-    for (let index = 0; index < data.length; index++) {
-      let listItem = document.createElement("div");
-      listItem.className = "list__item";
-      listItem.innerHTML = `
-                 <p class="coin__name">-</p>
-                <p class="coin__price">-</p>
-                <p class="coin__1h">-</p>
-                <p class="coin__24h">-</p>
-                <p class="coin__market-cap">-</p>
-                <p class="coin__volume">-</p>
-                <p class="coin__dex">-</p>
-                <p class="coin__age">-</p>
-                <p class="coin__dextxns">-</p>
-            `;
-      listContainer.append(listItem);
+    let response = await fetch(
+      `http://localhost:3000/api/coins?page=${page}&limit=${limit}`,
+    );
+    const data = await response.json();
+
+    if (data.success) {
+      renderHTML(data.data);
+      setupPagination(data.meta);
     }
-    getCoinData();
-    console.log("Список создан");
   } catch (error) {
     console.error(error.message);
   }
 }
 
-createHTMLElement();
-
-async function getCoinData() {
+async function loadMeta() {
   try {
-    const coinNames = document.querySelectorAll(".coin__name");
-    const coinPrices = document.querySelectorAll(".coin__price");
-    const coin1H = document.querySelectorAll(".coin__1h");
-    const coin24H = document.querySelectorAll(".coin__24h");
-    const coinMC = document.querySelectorAll(".coin__market-cap");
-    const coinVolume = document.querySelectorAll(".coin__volume");
-    const coinDEX = document.querySelectorAll(".coin__dex");
-    const coinAge = document.querySelectorAll(".coin__age");
-    const coinDEXTXNS = document.querySelectorAll(".coin__dextxns");
-    let response = await fetch(URLToJSON);
-    let data = await response.json();
-      // -----------------------------------------
-    coinNames.forEach((element, index) => {
-      element.innerText = data[index].name;
-      if (data[index].symbol === "USDT") {
-        element.innerText = data[index].symbol;
-      }
-    });
-    coinPrices.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const priceValue = data.find((coin) => coin.symbol === symbols).quote.USD
-        .price;
-      element.innerText = `$ ${priceValue.toFixed(4)}`;
-    });
-    coin1H.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote
-        .USD.percent_change_1h;
-      element.innerText = `${oneHourValue.toFixed(2)} %`;
-      if(!array1H[symbols]){
-        array1H[symbols]=[0]
-      }
-      let curr = data[index].quote.USD.percent_change_1h
-      let prev = array1H[symbols][0]
-      let result = curr - prev 
-      array1H[symbols]=curr
-      if(result>0){
-        element.style.color = '#16C784'
-      } else if (result<0){
-        element.style.color = '#EA3943'
-      }
-    });
-    coin24H.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const oneHourValue = data.find((coin) => coin.symbol === symbols).quote
-        .USD.percent_change_24h;
-      element.innerText = `${oneHourValue.toFixed(2)} %`;
-      if(!array24H[symbols]){
-        array24H[symbols]=[0]
-      }
-      let curr = data[index].quote.USD.percent_change_24h
-      let prev = array24H[symbols][0]
-      let result = curr - prev 
-      array24H[symbols]=curr
-      if(result>0){
-        element.style.color = '#16C784'
-      } else if (result<0){
-        element.style.color = '#EA3943'
-      }
-    });
-    coinMC.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const MarketCap = data.find((coin) => coin.symbol === symbols).quote.USD
-        .market_cap;
-      element.innerText = convertNumber(MarketCap);
-    });
-    coinVolume.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const Volume = data.find((coin) => coin.symbol === symbols).quote.USD
-        .volume_24h;
-      element.innerText = convertNumber(Volume);
-    });
-    coinAge.forEach((element, index) => {
-      const symbols = data[index].symbol;
-      const date = data.find((coin) => coin.symbol === symbols).date_added;
-      const oneHourValue = convertTime(date);
-      element.innerText = oneHourValue;
-    });
-    console.log("Данные обновлены в спике");
+    let responseMeta = await fetch('data/crypto-meta.json')
+    let metaData = await responseMeta.json()
+
+    metaDataArr = Object.values(metaData)
+
+    loadCoins(currentPage);
+    
   } catch (error) {
-    console.error(error.message);
-  } finally {
-    setTimeout(getCoinData, 60000);
+    console.error(error.message)
   }
+}
+
+loadMeta()
+
+function renderHTML(data) {
+  listContainer.innerHTML = "";
+
+  for (let index = 0; index < data.length; index++) {
+    let listItem = document.createElement("div");
+    listItem.className = "list__item";
+    listItem.innerHTML = `
+       <p class="coin__name">${data[index].name}</p>
+       <p class="coin__price">$${data[index].price.toFixed(2)}</p>
+       <p class="coin__1h">${data[index].percent_change_1h.toFixed(2)} %</p>
+       <p class="coin__24h">${data[index].percent_change_24h.toFixed(2)} %</p>
+       <p class="coin__market-cap">${convertNumber(data[index].market_cap)}</p>
+       <p class="coin__volume">${convertNumber(data[index].volume_24h)}</p>
+       <p class="coin__dex">-</p>
+       <p class="coin__age">${convertTime(data[index].date_added)}</p>
+       <p class="coin__dextxns">-</p>
+    `;
+
+    const coin1hElement = listItem.querySelector(".coin__1h");
+    if (data[index].percent_change_1h > 0)
+      coin1hElement.style.color = "#16C784";
+    if (data[index].percent_change_1h < 0)
+      coin1hElement.style.color = "#EA3943";
+
+    const coin24hElement = listItem.querySelector(".coin__24h");
+    if (data[index].percent_change_24h > 0)
+      coin24hElement.style.color = "#16C784";
+    if (data[index].percent_change_24h < 0)
+      coin24hElement.style.color = "#EA3943";
+
+    listContainer.append(listItem);
+  }
+  const coinName = document.querySelectorAll(".coin__name");
+
+  coinName.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const clickedName = event.target.innerText.toLowerCase().trim()
+      const coin = metaDataArr.find(coin => coin.name.toLowerCase() === clickedName)
+
+      window.location.href = `http://localhost:3000/coin-info/${coin.slug}`;
+    });
+  });
+}
+
+function setupPagination(meta) {
+  const paginationContainer = document.querySelector(".pages");
+  if (!paginationContainer) return;
+
+  paginationContainer.innerHTML = "";
+
+  const prevButton = document.createElement("div");
+  prevButton.className = "pages__item";
+  prevButton.innerText = "<-";
+
+  if (meta.currentPage === 1) {
+    prevButton.style.opacity = "0.5";
+    prevButton.style.cursor = "not-allowed";
+  } else {
+    prevButton.addEventListener("click", () => {
+      currentPage--;
+      loadCoins(currentPage);
+    });
+  }
+  paginationContainer.append(prevButton);
+
+  for (let i = 1; i <= meta.totalPages; i++) {
+    const pageButton = document.createElement("div");
+    pageButton.className = "pages__item";
+    pageButton.innerText = i;
+
+    if (i === meta.currentPage) {
+      pageButton.style.backgroundColor = "#3861fb";
+      pageButton.style.color = "#ffffff";
+    }
+
+    pageButton.addEventListener("click", () => {
+      currentPage = i;
+      loadCoins(currentPage);
+    });
+
+    paginationContainer.append(pageButton);
+  }
+
+  const nextButton = document.createElement("div");
+  nextButton.className = "pages__item";
+  nextButton.innerText = "->";
+
+  if (meta.currentPage === meta.totalPages) {
+    nextButton.style.opacity = "0.5";
+    nextButton.style.cursor = "not-allowed";
+  } else {
+    nextButton.addEventListener("click", () => {
+      currentPage++;
+      loadCoins(currentPage);
+    });
+  }
+  paginationContainer.append(nextButton);
 }

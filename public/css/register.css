@@ -1,91 +1,86 @@
-html {
-    scroll-behavior: smooth;
-}
-
-:root {
-    --background-color: #0F0F0F;
-    --container-color: #1E1F20;
-    --grey-90: #e6e6e6;
-    --hover-color: #2D2E30;
-    --text-hover-color: #4e6ed8;
-}
-
-:root {
-    --font-family: "Barlow", sans-serif;
-    --second-family: "Inter", sans-serif;
-}
-
-.register__container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+@import url('main.css');
 
 .register__flexbox {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: 70vh;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+    margin: 8% 0px;
 }
 
 #register__form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-    margin: 25% auto;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
     background-color: var(--container-color);
-    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
 }
 
 .register__title {
     font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 150%;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -0.5px;
     color: var(--grey-90);
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
+    text-transform: uppercase;
 }
 
 #username__input, #email__input, #password__input {
-    padding: 10px;
-    background-color: var(--background-color);
-    border: none;
-    border-radius: 4px;
+    padding: 14px 16px;
+    background-color: #0A0A0B;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
     color: var(--grey-90);
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-90);
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+#username__input:focus, #email__input:focus, #password__input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    background-color: #0F0F11;
 }
 
 #submit__button {
-    padding: 10px;
-    background-color: var(--hover-color);
+    padding: 14px;
+    background: var(--accent-gradient);
     border: none;
-    border-radius: 4px;
-    color: var(--grey-90);
+    border-radius: 8px;
+    color: #FFFFFF;
     font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-90);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    margin-top: 10px;
 }
 
 #submit__button:hover {
-    background-color: var(--text-hover-color);
-    transition: 0.2s;
+    filter: brightness(1.1);
+    transform: translateY(-1px);
 }
 
 .register__link {
     font-family: var(--second-family);
     font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-90);
+    font-size: 14px;
+    color: var(--text-muted);
     text-decoration: none;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
+    transition: color 0.2s ease;
 }
 
 .register__link:hover {
@@ -93,47 +88,28 @@ html {
     transition: 150ms;
 }
 
-.about__title {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 150%;
-    color: var(--grey-90);
-    text-decoration: none;
-    margin: 0 auto;
-}
-.about__text {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 150%;
-    color: var(--grey-90);
-    text-decoration: none;
-    margin: 0 auto;
-}
-
 .register__error, .email__error {
-    display: block;
     font-family: var(--second-family);
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 150%;
-    color: #D31130;
-    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140%;
+    color: #FF4D4D;
 }
 
 .warning__logo, .email__logo {
-    display: block;
-    margin: 0 10px;
-    width: 18px;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
 }
 
 .error__flexbox-1, .error__flexbox-2 {
     display: none;
-    justify-content: center;
+    gap: 8px;
     align-items: center;
-    padding: 0 10px;
-    margin: 0 auto;
+    margin: -10px 0 -5px 0;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 4px;
 }
 
 .verification__box {

@@ -107,6 +107,7 @@ registraitionForm.addEventListener("submit", async (event) => {
           const answerFromVerifyCode = await vCResponse.json();
           if (vCResponse.ok) {
             alert(answerFromVerifyCode.message);
+            window.location.href = '/';
           } else {
             alert(answerFromVerifyCode.error);
           }
