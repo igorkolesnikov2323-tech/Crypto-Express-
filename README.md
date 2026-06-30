@@ -68,7 +68,3 @@ Email: igorkolesnikov2323@gmail.com
 
 <img width="1862" height="947" alt="image" src="https://github.com/user-attachments/assets/ab536ea9-abf0-4ed0-b9e6-237c8192b5e6" />
 
-<img width="1853" height="1028" alt="image" src="https://github.com/user-attachments/assets/6abf02a3-2ec1-4095-ae1d-35d33efeac4d" />
-
-
-
