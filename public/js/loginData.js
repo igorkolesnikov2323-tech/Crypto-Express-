@@ -8,7 +8,7 @@ function validateEmail(email) {
 async function sendPOSTRequest(email, password) {
     try {
         // Send request on server
-        const response = await fetch('http://localhost:3000/login/dataValidation', {
+        const response = await fetch('/login/dataValidation', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

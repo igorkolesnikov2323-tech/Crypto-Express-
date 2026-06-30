@@ -9,6 +9,7 @@ const Database = require("better-sqlite3");
 const db = new Database(path.join(__dirname, "..", "allDB.db"), {
   verbose: console.log,
 });
+const sendCode = require('./sendCode')
 
 // POST request
 router.post("/", async (req, res) => {
@@ -20,9 +21,9 @@ router.post("/", async (req, res) => {
 
     // 2 Throw an error if fields are empty
     if (
-      username?.trim() === "" ||
-      email?.trim() === "" ||
-      password?.trim() === ""
+      !username?.trim() ||
+      !email?.trim() ||
+      !password?.trim()
     ) {
       return res.status(400).json({ error: "All fields must be filled out" });
     }
@@ -48,24 +49,13 @@ router.post("/", async (req, res) => {
       if (usernameSearch === undefined && emailSearch === undefined) {
         // send the email to sendCode that sends the ver. code to user
         try {
-          const response = await fetch("http://localhost:3000/api/send-code", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-              username: username,
-              password: password,
-            }),
-          });
-          const answerFromSendCode = await response.json();
+          sendCode(req.app, email, username, password)
           return res
             .status(201)
             .json({ success: true, message: "verification code sent to email" });
         } catch (error) {
           console.error(
-            "Не удалось отправить запрос на http://localhost:3000/api/send-code",
+            error.message
           );
         }
       }

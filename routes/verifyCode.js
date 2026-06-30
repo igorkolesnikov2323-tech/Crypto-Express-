@@ -17,16 +17,16 @@ router.post('/', async (req, res)=>{
     const record = verificationCodes[email]
 
     if(!record){
-        return res.status(400).json({error: 'Код не запрашивался или уже устарел'})
+        return res.status(400).json({error: 'The code was not requested or has already expired'})
     }
 
     if(Date.now()>record.expiresAt){
         delete verificationCodes[email]
-        return res.status(400).json({error: 'Срок записи уже истёк'})
+        return res.status(400).json({error: 'The registration period has already expired'})
     }
 
     if(code !== record.code){
-        return res.status(400).json({error: 'Неверный код'})
+        return res.status(400).json({error: 'Invalid code'})
     }
 
     try {
@@ -43,11 +43,11 @@ router.post('/', async (req, res)=>{
         console.log("User registered");
 
         delete verificationCodes[email]
-        return res.status(201).json({success: true, message: 'Пользователь успешно зарегистрирован'})
+        return res.status(201).json({success: true, message: 'The user has been successfully registered'})
 
     } catch (error) {
-        console.error('Ошибка регистрации пользователя')
-        return res.status(400).json({error: 'Ошибка регистрации пользователя'})
+        console.error('User registration error')
+        return res.status(400).json({error: 'User registration error'})
     }
 })
 

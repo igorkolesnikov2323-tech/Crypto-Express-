@@ -3,43 +3,39 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com', 
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-router.post("/", async (req, res) => {
-  const email = req.body.email;
-  const username = req.body.username
-  const password = req.body.password
+async function sendCode(app, email, username, password) {
   const code = Math.floor(100000 + Math.random() * 900000).toString();
-  const verificationCodes = req.app.get("verificationCodes");
+  const verificationCodes = app.get("verificationCodes");
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: process.env.NODEMAILER_PORT,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
   verificationCodes[email] = {
     code: code,
     expiresAt: Date.now() + 5 * 60 * 1000,
     username: username,
-    password: password
+    password: password,
   };
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: 'Код подтверждения',
-    text: `Ваш код подтверждения ${code}`
-  }
+    subject: "Verification code",
+    text: `Your verification code ${code}`,
+  };
 
-   await transporter.sendMail(mailOptions)
+  await transporter.sendMail(mailOptions);
+  return true;
+}
 
-  res.status(200).json({success: true, message: `Code sent ${code}`})
-});
-
-module.exports = router;
+module.exports = sendCode;

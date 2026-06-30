@@ -32,7 +32,7 @@ async function run() {
       JSON.stringify(data.data),
       { encoding: "utf8", flag: "w" },
     );
-    console.log("Получены данные из CoinMarketCap и занесены в JSON");
+    console.log("Get the data from CoinMarketCap and added to JSON");
   } catch (error) {
     console.error("Request error:", error.message);
   } finally {

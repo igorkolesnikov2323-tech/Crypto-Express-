@@ -19,16 +19,16 @@ function validatePassword(pass) {
   } else {
     console.log("password is not correct");
     if (pass.length <= 8) {
-      console.log("Пароль слишком короткий");
+      console.log("Password is to short");
     }
     if (!symbolsOfPass.some((str) => numberRegex.test(str))) {
-      console.log("Пароль должен содержать цифры");
+      console.log("Password must contain the numbers");
     }
     if (!symbolsOfPass.some((str) => regexUpper.test(str))) {
-      console.log("Пароль должен сожержать заглавные буквы");
+      console.log("password must contain the upper latters");
     }
     if (!symbolsOfPass.some((str) => specialCharsRegex.test(str))) {
-      console.log("Пароль должен содержать специальные симовлы");
+      console.log("Password must contain the special symbols");
     }
     return false;
   }

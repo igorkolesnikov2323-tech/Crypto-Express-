@@ -21,23 +21,23 @@ function validatePassword(pass) {
   } else {
     console.log("password is not correct");
     if (pass.length <= 8) {
-      console.log("Пароль слишком короткий");
+      console.log("Password is to short");
     }
     if (!symbolsOfPass.some((str) => numberRegex.test(str))) {
-      console.log("Пароль должен содержать цифры");
+      console.log("The password must contain numbers");
     }
     if (!symbolsOfPass.some((str) => regexUpper.test(str))) {
-      console.log("Пароль должен сожержать заглавные буквы");
+      console.log("The password must contain uppercase letters");
     }
     if (!symbolsOfPass.some((str) => specialCharsRegex.test(str))) {
-      console.log("Пароль должен содержать специальные симовлы");
+      console.log("The password must contain special symbols");
     }
     return false;
   }
 }
 
 async function sendPOSTRequest(username, email, password) {
-  return await fetch("http://localhost:3000/api/register", {
+  return await fetch("/api/register", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -92,7 +92,7 @@ registraitionForm.addEventListener("submit", async (event) => {
 
           // send the code to verifyCode
           const vCResponse = await fetch(
-            "http://localhost:3000/api/verify-code",
+            "/api/verify-code",
             {
               method: "POST",
               headers: {

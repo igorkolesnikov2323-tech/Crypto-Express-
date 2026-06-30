@@ -36,7 +36,7 @@ function updateDatabase(){
     });
 
     saveMany(coinsArray);
-    console.log(`Данные обновлены!: ${coinsArray.length}`);
+    console.log(`Data updated!: ${coinsArray.length}`);
 
   } catch (error) {
     console.log(error.message);

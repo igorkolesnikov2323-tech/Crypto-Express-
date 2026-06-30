@@ -13,8 +13,8 @@ let metaDataArr = []
 async function loadCoins(page) {
   try {
     let response = await fetch(
-      `http://localhost:3000/api/coins?page=${page}&limit=${limit}`,
-    );
+      `/api/coins?page=${page}&limit=${limit}`,
+    );  
     const data = await response.json();
 
     if (data.success) {
@@ -81,7 +81,7 @@ function renderHTML(data) {
       const clickedName = event.target.innerText.toLowerCase().trim()
       const coin = metaDataArr.find(coin => coin.name.toLowerCase() === clickedName)
 
-      window.location.href = `http://localhost:3000/coin-info/${coin.slug}`;
+      window.location.href = `/coin-info/${coin.slug}`;
     });
   });
 }

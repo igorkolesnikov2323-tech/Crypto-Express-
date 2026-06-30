@@ -8,8 +8,8 @@ const fs = require("fs");
 /* const rolesStmt = db.prepare(`ALTER TABLE users ADD COLUMN roles TEXT DEFAULT 'user'`)
 rolesStmt.run() */
 
-/* const deleteStml = db.prepare(`DELETE FROM users WHERE id = 25`)
-deleteStml.run() */
+const deleteStml = db.prepare(`DELETE FROM users WHERE id = 26`)
+deleteStml.run()
 
 /* const stmt = db.prepare(`
   CREATE TABLE IF NOT EXISTS coins (
